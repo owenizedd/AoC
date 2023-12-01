@@ -1,0 +1,19 @@
+{
+  "name": "aoc2023",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "turbowatch ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "algorithms": "^0.10.0",
+    "graphlib": "^2.1.8",
+    "turbowatch": "^2.29.4"
+  },
+  "type": "module"
+}
