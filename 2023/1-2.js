@@ -998,13 +998,7 @@ five2sixfourcjfvnmhrxrtwovhrdrfrssphgtcqthhzxh
 lxtbmsevenbms3one8dsbsixnine
 sevenhcgr6ninefour
 trknlxnv43zxlrqjtwonect`.split('\n')
-const lines2 = `two1nine
-eightwothree
-abcone2threexyz
-xtwone3four
-4nineeightseven2
-zoneight234
-7pqrstsixteen`.split('\n')
+
 
 const digits = "one,two,three,four,five,six,seven,eight,nine".split(',')
 const digitMap = [1, 2, 3, 4, 5, 6, 7, 8, 9]

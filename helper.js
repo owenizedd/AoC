@@ -33,6 +33,9 @@ export function bfs(graph, root) {
 export function getAlgorithm() {
   return algorithms;
 }
+export function generate2DArray(rows, columns, value = 0) {
+  return Array(rows).fill(Array(columns).fill(value));
+}
 
 
 //Read more: https://github.com/felipernb/algorithms.js/tree/master/src
