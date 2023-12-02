@@ -1,62 +1,70 @@
 import algorithms from 'algorithms';
-export function findMaxElement(arr) {
-  return Math.max(...arr);
-}
-export function findMinElement(arr) {
-  return Math.min(...arr);
-}
-export function findAverage(arr) {
-  return arr.reduce((a, b) => a + b) / arr.length;
-}
-export function getSum(arr) {
-  return arr.reduce((a, b) => a + b);
-}
-export function getLast(arr) {
-  return arr[arr.length - 1];
-}
-export function reverseArray(arr) {
-  return [...arr].reverse();
-}
 
-export function sortAscending(arr) {
-  return [...arr].sort();
+export const findMaxElement = (arr) => Math.max(...arr);
+
+export const findMinElement = (arr) => Math.min(...arr);
+
+export const findAverage = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+
+export const getSum = (arr) => arr.reduce((a, b) => a + b);
+
+export const getLast = (arr) => arr[arr.length - 1];
+
+export const reverseArray = (arr) => [...arr].reverse();
+
+export const sortAscending = (arr) => [...arr].sort();
+
+export const sortDescending = (arr) => [...arr].sort().reverse();
+
+export const binarySearch = (arr, item) => algorithms.Search.binarySearch(arr, item);
+
+export const bfs = (graph, root) => algorithms.Search.bfs(graph, root);
+
+export const getAlgorithm = () => algorithms;
+
+export const generate2DArray = (rows, columns, value = 0) => Array(rows).fill(Array(columns).fill(value));
+
+export function fill2DArrayBorder(original2DArr, value = ' ') {
+  const arr = structuredClone(original2DArr);
+  const rows = arr.length;
+  const columns = arr[0].length;
+  for (let i = 0; i < rows; i++) {
+    arr[i][0] = value;
+    arr[i][columns - 1] = value;
+  }
+  for (let i = 0; i < columns; i++) {
+    arr[0][i] = value;
+    arr[rows - 1][i] = value;
+  }
+  return arr;
 }
-export function sortDescending(arr) {
-  return [...arr].sort().reverse();
-}
-export function binarySearch(arr, item) {
-  return algorithms.Search.binarySearch(arr, item);
-}
-export function bfs(graph, root) {
-  return algorithms.Search.bfs(graph, root);
-}
-export function getAlgorithm() {
-  return algorithms;
-}
-export function generate2DArray(rows, columns, value = 0) {
-  return Array(rows).fill(Array(columns).fill(value));
-}
-export function isNumber(n) {
-  return !isNaN(parseFloat(n)) && isFinite(n);
-}
+export const isNumber = (n) => !isNaN(parseFloat(n)) && isFinite(n);
+
+export const getAsciiCode = (char) => char.charCodeAt(0);
+
 export function isLetter(n) {
-  return String.fromCharCode(n) >= 'a' && String.fromCharCode(n) <= 'z' || String.fromCharCode(n) >= 'A' && String.fromCharCode(n) <= 'Z';
+  return getAsciiCode(n) >= 65 && getAsciiCode(n) <= 90 || getAsciiCode(n) >= 97 && getAsciiCode(n) <= 122;
 }
-export function forEachNumber(arr, callback) {
-  return arr.filter(isNumber).map(callback);
-}
-export function forEachLetter(arr, callback) {
-  return arr.filter(isLetter).map(callback);
-}
-export function findFirstFromSorted(arr, target) {
+export const forEachNumber = (arr, callback) => arr.filter(isNumber).map(callback);
+
+export const forEachLetter = (arr, callback) => arr.filter(isLetter).map(callback);
+
+export const findFirstFromSorted = (arr, target) => {
   const firstIndex = getAlgorithm().Search.binarySearch(arr, target);
   return firstIndex;
 }
-export function findLastFromSorted(arr, target) {
+export const findLastFromSorted = (arr, target) => {
   const firstIndex = getAlgorithm().Search.binarySearch(reverseArray(arr), target, true);
   return arr.length - firstIndex - 1;
 }
 
+/**
+ * 
+ * @param {array} arr 
+ * @param {string} target 
+ * @returns {array} result every index of target in arr
+ */
+export const findAllMatches = (arr, target) => [...arr.matchAll(new RegExp(target, 'g'))]
 
 
 //Read more: https://github.com/felipernb/algorithms.js/tree/master/src

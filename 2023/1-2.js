@@ -1,3 +1,5 @@
+import { findAllMatches } from "../helper.js";
+
 const lines = `heightseven4two5
 npskfdstpk2knsm
 djnrmpxjbsbpgzvtjkhq6pkkfshx
@@ -1007,7 +1009,7 @@ for (const line of lines) {
   const letters = line.split('')
   const indexes = [];
   for (const digit of digits) {
-    const matchIndexes = [...line.matchAll(new RegExp(digit, 'gi'))].map(a => ({ index: a.index, digit }));
+    const matchIndexes = findAllMatches(line, digit).map(a => ({ index: a.index, digit }));
     if (matchIndexes.length) {
       indexes.push(...matchIndexes);
     }
