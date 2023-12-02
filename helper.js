@@ -36,6 +36,27 @@ export function getAlgorithm() {
 export function generate2DArray(rows, columns, value = 0) {
   return Array(rows).fill(Array(columns).fill(value));
 }
+export function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+export function isLetter(n) {
+  return String.fromCharCode(n) >= 'a' && String.fromCharCode(n) <= 'z' || String.fromCharCode(n) >= 'A' && String.fromCharCode(n) <= 'Z';
+}
+export function forEachNumber(arr, callback) {
+  return arr.filter(isNumber).map(callback);
+}
+export function forEachLetter(arr, callback) {
+  return arr.filter(isLetter).map(callback);
+}
+export function findFirstFromSorted(arr, target) {
+  const firstIndex = getAlgorithm().Search.binarySearch(arr, target);
+  return firstIndex;
+}
+export function findLastFromSorted(arr, target) {
+  const firstIndex = getAlgorithm().Search.binarySearch(reverseArray(arr), target, true);
+  return arr.length - firstIndex - 1;
+}
+
 
 
 //Read more: https://github.com/felipernb/algorithms.js/tree/master/src
