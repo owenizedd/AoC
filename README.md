@@ -1,4 +1,4 @@
-Just my minimal JavaScript setup for AoC using `turbowatch`.
+Just my minimal JavaScript setup for AoC using pure node
 
 To run each problem code just use:  
 `pnpm start <day>.js`
