@@ -8,6 +8,8 @@ export const findAverage = (arr) => arr.reduce((a, b) => a + b) / arr.length;
 
 export const getSum = (arr) => arr.reduce((a, b) => a + b);
 
+export const getProduct = (arr) => arr.reduce((a, b) => a * b);
+
 export const getLast = (arr) => arr[arr.length - 1];
 
 export const reverseArray = (arr) => [...arr].reverse();
@@ -56,6 +58,21 @@ export const findFirstFromSorted = (arr, target) => {
 export const findLastFromSorted = (arr, target) => {
   const firstIndex = getAlgorithm().Search.binarySearch(reverseArray(arr), target, true);
   return arr.length - firstIndex - 1;
+}
+export const dirsIncludeDiagonal = [
+  [-1, -1], [-1, 0], [-1, 1],
+  [0, -1], [0, 1],
+  [1, -1], [1, 0], [1, 1],
+];
+export const dirsWithoutDiagonal = [
+  [-1, 0], [1, 0], [0, -1], [0, 1],
+]
+export const loopThroughDirections = (includeDiagonal, callback) => {
+
+  const dirs = includeDiagonal ? dirsIncludeDiagonal : dirsWithoutDiagonal;
+  for (const [dx, dy] of dirs) {
+    callback(dx, dy);
+  }
 }
 
 /**
