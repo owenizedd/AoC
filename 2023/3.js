@@ -1,4 +1,4 @@
-import { isNumber } from "../helper.js";
+import { isNumber, loopThroughDirections } from "../helper.js";
 
 const lines = `.......855.442......190..................................969..........520.......59.............................................172..........
 .......................-....@...21...........971........................*..............965.......577=..........316..465*169.................
@@ -162,18 +162,14 @@ function getAdjacentNumber(i, j) {
     }
     return +num;
   }
-  const dirsIncludeDiagonal = [
-    [-1, -1], [-1, 0], [-1, 1],
-    [0, -1], [0, 1],
-    [1, -1], [1, 0], [1, 1],
-  ];
+
   let sum = 0;
-  for (const [x, y] of dirsIncludeDiagonal) {
+  loopThroughDirections(true, (x, y) => {
     if (lines[i + x] && isNumber(lines[i + x][j + y]) && !visited[(i + x) + ',' + (j + y)]) {
       const num = getNumber(i + x, j + y);
       sum += num;
     }
-  }
+  });
   return sum;
 }
 for (let i = 0; i < lines.length; i++) {
