@@ -8,7 +8,7 @@ const scriptPath = path.join(currentYear.toString(), `${filename}.js`);
 
 if (fs.existsSync(scriptPath)) {
   spawn(`reset`);
-  const child = spawn('node', ['--watch', scriptPath], { stdio: 'inherit' });
+  const child = spawn('node', ['--max-old-space-size=20177', '--watch', scriptPath], { stdio: 'inherit' });
   child.on('error', (err) => {
     console.error('Failed to start subprocess.', err);
   });

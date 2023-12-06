@@ -19,10 +19,34 @@ export const sortAscending = (arr) => [...arr].sort();
 export const sortDescending = (arr) => [...arr].sort().reverse();
 
 export const binarySearch = (arr, item) => algorithms.Search.binarySearch(arr, item);
+export const binarySearchFirstOccurence = (left, right, middleCallback) => {
+  while (left < right) {
+    const mid = Math.floor((left + right) / 2);
+    if (middleCallback(mid)) {
+      right = mid;
+    } else {
+      left = mid + 1;
+    }
+  }
+  return right;
+}
+export const binarySearchLastOccurence = (left, right, middleCallback) => {
+  while (left < right) {
+    const mid = Math.floor((left + right + 1) / 2);
+    if (middleCallback(mid)) {
+      left = mid;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return left;
 
+}
 export const bfs = (graph, root) => algorithms.Search.bfs(graph, root);
 
 export const getAlgorithm = () => algorithms;
+
+export const generateArray = (length, value = 0) => Array(length).fill(value);
 
 export const generate2DArray = (rows, columns, value = 0) => Array(rows).fill(Array(columns).fill(value));
 
