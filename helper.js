@@ -98,6 +98,17 @@ export const loopThroughDirections = (includeDiagonal, callback) => {
     callback(dx, dy);
   }
 }
+export const getOptional = (obj, keys, defaultValue = null) => {
+  let current = obj;
+  for (const key of keys) {
+    if (current[key] === undefined) {
+      return defaultValue;
+    }
+    current = current[key];
+  }
+  return current;
+}
+export const p = (...args) => console.log(...args);
 
 /**
  * 

@@ -253,5 +253,5 @@ blocks.forEach(block => {
   }
   seeds = newSeeds;
 });
-console.log(seeds)
+// console.log(seeds)
 console.log(Math.min(...seeds.map(seed => seed[0])));
