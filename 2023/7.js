@@ -999,6 +999,8 @@ J2T55 542
 QQQJQ 867
 QQQQA 506
 J7777 154`.split('\n');
+
+
 let bids = {};
 let cards = [];
 const parse = () => {
@@ -1065,8 +1067,6 @@ const pokerCardCompare = (cardA, cardB) => {
   parseCard(cardB, sortedB);
   sortedA.sort(customLexi);
   sortedB.sort(customLexi);
-  p(sortedA)
-  p(sortedB)
   const maxLen = Math.max(sortedA.length, sortedB.length);
 
   if (sortedA.length < sortedB.length) {
