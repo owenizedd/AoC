@@ -1099,7 +1099,6 @@ const pokerCardCompare = (cardA, cardB) => {
     }
   }
   return 0;
-
 }
 const solve = () => {
   let ans = 0;
