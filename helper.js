@@ -1,5 +1,6 @@
 import algorithms from 'algorithms';
-
+import fs from 'fs';
+import path from 'path';
 export const findMaxElement = (arr) => Math.max(...arr);
 
 export const findMinElement = (arr) => Math.min(...arr);
@@ -48,8 +49,45 @@ export const getAlgorithm = () => algorithms;
 
 export const generateArray = (length, value = 0) => Array(length).fill(value);
 
-export const generate2DArray = (rows, columns, value = 0) => Array(rows).fill(Array(columns).fill(value));
+export const generate2DArray = (rows, columns, value = 0) => {
+  const arr = [];
+  for (let i = 0; i < rows; i++) {
+    arr.push(generateArray(columns, value));
+  }
+  return arr;
 
+}
+
+export const count2DArray = (arr, callback) => {
+  const rows = arr.length;
+  const columns = arr[0].length;
+  let result = 0;
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < columns; j++)
+      result += Number(Boolean(callback(arr[i][j])));
+  }
+  return result;
+}
+export const print2DArray = (arr, filename, space = ' ') => {
+  if (filename){
+    const currentYear = new Date().getFullYear();
+    const scriptPath = path.join(currentYear.toString(), `${filename}.txt`);
+    const stream = fs.createWriteStream(scriptPath);
+    stream.once('open', function (fd) {
+      for (const row of arr) {
+        stream.write(row.join(space) + '\n');
+      }
+      stream.end();
+    });
+  } 
+  for (const row of arr) {
+    if (row instanceof Array) {
+      p(row.join(space));
+    } else p(row);
+
+  }
+
+}
 export function fill2DArrayBorder(original2DArr, value = ' ') {
   const arr = structuredClone(original2DArr);
   const rows = arr.length;
@@ -91,6 +129,7 @@ export const dirsIncludeDiagonal = [
 export const dirsWithoutDiagonal = [
   [-1, 0], [1, 0], [0, -1], [0, 1],
 ]
+
 export const loopThroughDirections = (includeDiagonal, callback) => {
 
   const dirs = includeDiagonal ? dirsIncludeDiagonal : dirsWithoutDiagonal;
@@ -117,8 +156,6 @@ export const p = (...args) => console.log(...args);
  * @returns {array} result every index of target in arr
  */
 export const findAllMatches = (arr, target) => [...arr.matchAll(new RegExp(target, 'g'))]
-
-
 //Read more: https://github.com/felipernb/algorithms.js/tree/master/src
 
 /**
