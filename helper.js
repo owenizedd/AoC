@@ -118,6 +118,15 @@ export const p = (...args) => console.log(...args);
  */
 export const findAllMatches = (arr, target) => [...arr.matchAll(new RegExp(target, 'g'))]
 
+export const windowedArray = (arr, windowSize, callback) => {
+  const result = [];
+  for (let i = 0; i < arr.length - windowSize + 1; i++) {
+    const window = arr.slice(i, i + windowSize);
+    result.push(callback(window));
+  }
+  return result;
+
+}
 
 //Read more: https://github.com/felipernb/algorithms.js/tree/master/src
 
